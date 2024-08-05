@@ -2,4 +2,17 @@
 title: "About"
 ---
 
-About this site
+This website is made by Mihir Kaushal on August 3rd, 2024. 
+
+I created this website as part of Kane's Data Science Bootcamp. I made the website using the R language. I utilized the help of ChatGPT to fix any errors I ran into. 
+
+XX Overall, I had a lot of fun making this project and I learned a lot about statistics and data science. 
+
+
+My Email: mihir.kaush@gmail.com  <br />
+
+My LinkedIn: [LinkedIn](https://www.linkedin.com/in/mihir-kaushal/) <br />
+
+GitHub Repository: [GitHub Repo](https://github.com/MihirKaushal/drug-memory-test) <br />
+
+Kane's Data Science Bootcamp: [Course Homepage](https://bootcamp.davidkane.info/)

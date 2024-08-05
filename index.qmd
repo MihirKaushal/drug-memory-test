@@ -1,7 +1,152 @@
 ---
 title: "Drug Memory Test"
+author: "Mihir Kaushal"
+output: 
+  html_document:
+    css: styles.css  # Optional: Customize CSS for better control over layout
+    fig_width: 100%  # Set the width of figures to 100% of the container
+    fig_height: 100%  # Set the height of figures to 100% of the container
+    fig_caption: yes  # Enable captions for figures
+    keep_md: true  # Keep the intermediate Markdown file for better control
+execute: 
+  echo: false  # Do not display code in the output
+  warning: false  # Suppress warnings
+  message: false  # Suppress messages
 ---
 
-This is a Quarto website.
+```{r}
+#| label: setup 
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+library(tidyverse)  # Load the tidyverse package, which includes ggplot2, dplyr, and other useful packages
+library(scales)  # Load scales for better axis formatting
+library(repr)  # Load repr to control plot size
+library(knitr)  # Load knitr for knitting the document
+library(readr)  # Load readr for reading data
+library(ggdist)
+library(ggthemes)
+library(brms)
+library(gt)
+library(gtsummary)
+library(tidybayes)
+
+```
+
+```{r}
+#| label: data 
+#| cache: true
+
+drug_memory_data <- read_csv("drug_memory_data.csv")  # Read the data from a CSV file
+
+graph_data <- drug_memory_data |>
+  select(Dosage, Drug, Diff) |>
+  mutate(Dosage = fct_relevel(factor(Dosage), c("1", "2", "3")),
+         Drug = ifelse(Drug == "A", "Alprazolam",
+                ifelse(Drug == "T", "Triazolam",
+                ifelse(Drug == "S", "Sugar Tablet", Drug))))
+
+```
+
+```{r}
+# This graph shows the number of motor thefts in Chicago on the y axis, and the year (2001 - 2024) on the x axis,the color represents if there has been an arrest made or not.
+#| label: difference_graph 
+
+# Create a bar plot using ggplot2
+d <- graph_data |>
+  ggplot(aes(y = fct_reorder(Drug, Diff), x = Diff)) +
+  stat_slab(aes(fill = Dosage),
+              position = 'dodge') +
+  scale_fill_calc() +
+  scale_x_continuous(breaks = c(-50, -40, -30, -20, -10, 0, 10, 20, 30, 40, 50)) +
+  labs(title = "Effect of Drugs on the Difference in Memory Test Score",
+       subtitle = "The drug Alprazolam with 3 dosages has the greatest difference in memory test score.",
+       y = "Type of anti-anxiety drug",
+       x = "Difference in Memory Test Score (Before - After)") +
+  theme_clean() + # Add data source caption
+     theme(plot.title = element_text(size = 30, color = "white"),  # Customize plot title text
+           plot.subtitle = element_text(size = 20, color = "white"),  # Customize plot subtitle text
+           axis.title.x = element_text(size = 20, color = "white"),  # Customize x-axis title text
+           axis.title.y = element_text(size = 20, color = "white"),  # Customize y-axis title text
+           axis.text.x = element_text(size = 20, color = "white"),  # Customize x-axis text
+           axis.text.y = element_text(size = 20, color = "white"),  # Customize y-axis text
+           plot.caption = element_text(size = 20, color = "white"),  # Customize caption text
+           legend.position = "bottom", 
+           legend.text = element_text(size = 20, color = "white"),  # Customize legend text
+           legend.title = element_text(size = 20, color = "white"),  # Customize legend title text
+           legend.key.size = unit(1, "cm"),  # Set legend key size
+           legend.background = element_rect(fill = "black"),  # Set legend background color
+           plot.margin = margin(2, 2, 2, 2, "cm"),  # Set plot margins
+           panel.background = element_rect(fill = "black"),  # Set panel background color
+           plot.background = element_rect(fill = "black", colour = "darkgray"))  # Set plot background color and border
+
+ggsave("difference_graph.png", plot = d, width = 18, height = 12, units = "in", limitsize = FALSE)  # Save the plot as a PNG file
+
+knitr::include_graphics("difference_graph.png")  # Include the saved plot in the document
+
+```
+
+<!-- Intro paragraph  -->
+
+The data is from an experiment on the effects of anti-anxiety medicine on memory recall. The data was downloaded from [kaggle.com](https://www.kaggle.com/). I used this data to find the causal effect of type of drug given to the participant and their difference in memory test score. The data originally had 9 columns, so I had to select only the information that I wanted to analyze. By analyzing the data, I was able to find the causal relationship between type of drug and difference in memory test score.
+
+```{r}
+#| label: causal_data
+#| cache: true
+
+fit <- brm(
+  formula = Diff ~ Dosage + Drug,
+  data = graph_data,
+  family = gaussian(),
+  silent = 2,
+  refresh = 0,
+  seed = 12
+)
+
+fit |> tbl_regression(intercept = TRUE)
+
+fixef(fit)
+
+ndata <- expand_grid(Dosage = c("1", "2", "3"), Drug = c("Alprazolam", "Triazolam", "Sugar Tablet"))
+
+```
+
+In the experiment, there were three types of drugs as the treatment: Alprazolam, Triazolam, and Sugar Tablet as a placebo for the control group. The participants were both genders above 25+ years old to ensure a fully developed pre-frontal cortex, a region responsible for higher level cognition and memory recall. Experiment was executed under the supervision of Mr. Almohalwas at UCLA. All aspects of the experiment such as experimental design, data collection and preprocessing was done by Steve Ahn.
+
+```{r}
+# This graph shows the number of motor thefts in Chicago on the y axis, and the year (2001 - 2024) on the x axis,the color represents if there has been an arrest made or not.
+#| label: causal_graph 
+
+# Create a bar plot using ggplot2
+c <- fit |> add_epred_draws(newdata = ndata) |>
+  ggplot(aes(y = fct_reorder(Drug, .epred), x = .epred)) +
+  stat_slab(aes(fill = Dosage),
+              position = 'dodge') +
+  scale_fill_calc() +
+  scale_x_continuous(breaks = c(-10, -5, 0, 5, 10, 15)) +
+  labs(title = "Effect of Drugs on the Difference in Memory Test Score",
+       subtitle = "The drug Alprazolam with 3 dosages has the greatest effect in memory test score.",
+       y = "Type of anti-anxiety drug",
+       x = "Average Treatment Effect") +
+  theme_clean() + # Add data source caption
+     theme(plot.title = element_text(size = 30, color = "white"),  # Customize plot title text
+           plot.subtitle = element_text(size = 20, color = "white"),  # Customize plot subtitle text
+           axis.title.x = element_text(size = 20, color = "white"),  # Customize x-axis title text
+           axis.title.y = element_text(size = 20, color = "white"),  # Customize y-axis title text
+           axis.text.x = element_text(size = 20, color = "white"),  # Customize x-axis text
+           axis.text.y = element_text(size = 20, color = "white"),  # Customize y-axis text
+           plot.caption = element_text(size = 20, color = "white"),  # Customize caption text
+           legend.position = "bottom", 
+           legend.text = element_text(size = 20, color = "white"),  # Customize legend text
+           legend.title = element_text(size = 20, color = "white"),  # Customize legend title text
+           legend.key.size = unit(1, "cm"),  # Set legend key size
+           legend.background = element_rect(fill = "black"),  # Set legend background color
+           plot.margin = margin(2, 2, 2, 2, "cm"),  # Set plot margins
+           panel.background = element_rect(fill = "black"),  # Set panel background color
+           plot.background = element_rect(fill = "black", colour = "darkgray"))  # Set plot background color and border
+
+ggsave("causal_graph.png", plot = c, width = 18, height = 12, units = "in", limitsize = FALSE)  # Save the plot as a PNG file
+
+knitr::include_graphics("causal_graph.png")  # Include the saved plot in the document
+
+```
+
+While triazolam and sugar are close to 0, Alprazolam, especially when the dose is 3, has a huge treatment effect on the difference in memory test score. This means that Alprazolam does have a negative impact on memory recall.
