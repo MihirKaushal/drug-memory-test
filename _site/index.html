@@ -655,17 +655,22 @@ ul.task-list li input[type="checkbox"] {
 </td>
 </tr>
 <tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Alprazolam</td>
+<td class="gt_row gt_center" headers="estimate">—</td>
+<td class="gt_row gt_center" headers="conf.low">—</td>
+</tr>
+<tr class="even">
 <td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;DrugSugarTablet</td>
 <td class="gt_row gt_center" headers="estimate">-9.7</td>
 <td class="gt_row gt_center" headers="conf.low">-13, -6.5</td>
 </tr>
-<tr class="even">
-<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;DrugTriazolam</td>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Triazolam</td>
 <td class="gt_row gt_center" headers="estimate">-10</td>
 <td class="gt_row gt_center" headers="conf.low">-13, -6.8</td>
 </tr>
 </tbody><tfoot class="gt_footnotes">
-<tr class="odd">
+<tr class="even">
 <td colspan="3" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span>
 <p>CI = Credible Interval</p></td>
 </tr>
@@ -675,14 +680,12 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                  Estimate Est.Error       Q2.5     Q97.5
-Intercept         6.919717  1.536334   3.987274  9.895358
-Dosage2           1.737129  1.652532  -1.412805  4.983343
-Dosage3           5.967027  1.676686   2.585028  9.196124
-DrugSugarTablet  -9.674756  1.640179 -12.915255 -6.490721
-DrugTriazolam   -10.030307  1.646437 -13.271227 -6.771954</code></pre>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="drug_data_fit.png" class="img-fluid figure-img"></p>
+<figcaption>fixef(fit)</figcaption>
+</figure>
 </div>
 <p>In the experiment, there were three types of drugs as the treatment: Alprazolam, Triazolam, and Sugar Tablet as a placebo for the control group. The participants were both genders above 25+ years old to ensure a fully developed pre-frontal cortex, a region responsible for higher level cognition and memory recall. Experiment was executed under the supervision of Mr.&nbsp;Almohalwas at UCLA. All aspects of the experiment such as experimental design, data collection and preprocessing was done by Steve Ahn.</p>
 <div class="cell">

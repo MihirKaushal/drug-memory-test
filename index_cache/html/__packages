@@ -18,3 +18,4 @@ brms
 gt
 gtsummary
 tidybayes
+htmltools

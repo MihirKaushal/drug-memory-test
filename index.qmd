@@ -28,8 +28,7 @@ library(brms)
 library(gt)
 library(gtsummary)
 library(tidybayes)
-
-#test
+library(htmltools)
 
 ```
 
@@ -94,6 +93,11 @@ The data is from an experiment on the effects of anti-anxiety medicine on memory
 #| label: causal_data
 #| cache: true
 
+# Convert Drug and Dosage to factors
+graph_data$Drug <- as.factor(graph_data$Drug)
+
+graph_data$Dosage <- as.factor(graph_data$Dosage)
+
 fit <- brm(
   formula = Diff ~ Dosage + Drug,
   data = graph_data,
@@ -105,11 +109,11 @@ fit <- brm(
 
 fit |> tbl_regression(intercept = TRUE)
 
-fixef(fit)
-
 ndata <- expand_grid(Dosage = c("1", "2", "3"), Drug = c("Alprazolam", "Triazolam", "Sugar Tablet"))
 
 ```
+
+![fixef(fit)](drug_data_fit.png)
 
 In the experiment, there were three types of drugs as the treatment: Alprazolam, Triazolam, and Sugar Tablet as a placebo for the control group. The participants were both genders above 25+ years old to ensure a fully developed pre-frontal cortex, a region responsible for higher level cognition and memory recall. Experiment was executed under the supervision of Mr. Almohalwas at UCLA. All aspects of the experiment such as experimental design, data collection and preprocessing was done by Steve Ahn.
 

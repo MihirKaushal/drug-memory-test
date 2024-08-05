@@ -6,3 +6,5 @@
 /.quarto/
 
 *Rproj
+
+*_site
