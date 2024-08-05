@@ -149,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <!-- Intro paragraph  -->
-<p>The data is from an experiment on the effects of anti-anxiety medicine on memory recall. The data was downloaded from <a href="https://www.kaggle.com/">kaggle.com</a>. I used this data to find the causal effect of type of drug given to the participant and their difference in memory test score. The data originally had 9 columns, so I had to select only the information that I wanted to analyze. By analyzing the data, I was able to find the causal relationship between type of drug and difference in memory test score.</p>
+<p>The effects of drugs on memory is very important to know for pharmaceutical companies that produce the medicine. The data is from an experiment on the effects of anti-anxiety medicine on memory recall. The data was downloaded from <a href="https://www.kaggle.com/">kaggle.com</a>. I used this data to find the causal effect of type of drug given to the participant and their difference in memory test score. The data originally had 9 columns, so I had to select only the information that I wanted to analyze. I modeled the difference in memory test score before the drug minus after taking the drug for a set amount of time as a linear function of type of drug and dose amount. By analyzing the data, I was able to find the causal relationship between type of drug and difference in memory test score.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="ivduukxfmj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -681,13 +681,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="drug_data_fit.png" class="img-fluid figure-img"></p>
-<figcaption>fixef(fit)</figcaption>
-</figure>
-</div>
-<p>In the experiment, there were three types of drugs as the treatment: Alprazolam, Triazolam, and Sugar Tablet as a placebo for the control group. The participants were both genders above 25+ years old to ensure a fully developed pre-frontal cortex, a region responsible for higher level cognition and memory recall. Experiment was executed under the supervision of Mr.&nbsp;Almohalwas at UCLA. All aspects of the experiment such as experimental design, data collection and preprocessing was done by Steve Ahn.</p>
+<p><img src="drug_data_fit.png" class="img-fluid"></p>
+<p>In the experiment, there were three types of drugs as the treatment: Alprazolam, Triazolam, and Sugar Tablet as a placebo for the control group. The participants were both genders above 25 years old to ensure a fully developed pre-frontal cortex, a region responsible for higher level cognition and memory recall. Experiment was executed under the supervision of Mr.&nbsp;Almohalwas at UCLA. All aspects of the experiment such as experimental design, data collection and preprocessing was done by Steve Ahn.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -783,7 +778,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/MihirKaushal\.github\.io\/drug-memory-test\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
