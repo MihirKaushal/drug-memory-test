@@ -1,4 +1,4 @@
-# drug-memory-test
+# Drug Memory Test
 
 Link to the website: https://mihirkaushal.github.io/drug-memory-test/
 
