@@ -3,25 +3,25 @@ title: "Drug Memory Test"
 author: "Mihir Kaushal"
 output: 
   html_document:
-    css: styles.css  # Optional: Customize CSS for better control over layout
-    fig_width: 100%  # Set the width of figures to 100% of the container
-    fig_height: 100%  # Set the height of figures to 100% of the container
-    fig_caption: yes  # Enable captions for figures
-    keep_md: true  # Keep the intermediate Markdown file for better control
+    css: styles.css  
+    fig_width: 100%  
+    fig_height: 100%  
+    fig_caption: yes  
+    keep_md: true 
 execute: 
-  echo: false  # Do not display code in the output
-  warning: false  # Suppress warnings
-  message: false  # Suppress messages
+  echo: false  
+  warning: false 
+  message: false  
 ---
 
 ```{r}
 #| label: setup 
 
-library(tidyverse)  # Load the tidyverse package, which includes ggplot2, dplyr, and other useful packages
-library(scales)  # Load scales for better axis formatting
-library(repr)  # Load repr to control plot size
-library(knitr)  # Load knitr for knitting the document
-library(readr)  # Load readr for reading data
+library(tidyverse)
+library(scales)  
+library(repr)  
+library(knitr)  
+library(readr)  
 library(ggdist)
 library(ggthemes)
 library(brms)
@@ -32,11 +32,13 @@ library(htmltools)
 
 ```
 
+> *What is the effect of drugs on memory recall?*
+
 ```{r}
 #| label: data 
 #| cache: true
 
-drug_memory_data <- read_csv("drug_memory_data.csv")  # Read the data from a CSV file
+drug_memory_data <- read_csv("drug_memory_data.csv")
 
 graph_data <- drug_memory_data |>
   select(Dosage, Drug, Diff) |>
