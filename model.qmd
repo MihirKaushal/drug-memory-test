@@ -80,7 +80,8 @@ c <- fit |> add_epred_draws(newdata = ndata) |>
   labs(title = "Effect of Drugs on the Difference in Memory Test Score",
        subtitle = "The drug Alprazolam with 3 dosages has the greatest effect in memory test score.",
        y = "Type of anti-anxiety drug",
-       x = "Average Treatment Effect") +
+       x = "Average Treatment Effect",
+       caption = "Made using the Bayesian regression model.") +
   theme_clean() + # Add data source caption
      theme(plot.title = element_text(size = 30, color = "white"),  # Customize plot title text
            plot.subtitle = element_text(size = 20, color = "white"),  # Customize plot subtitle text
@@ -104,4 +105,4 @@ knitr::include_graphics("causal_graph.png")  # Include the saved plot in the doc
 
 ```
 
-While triazolam and sugar are close to 0, Alprazolam, especially when the dose is 3, has a huge treatment effect on the difference in memory test score. This means that Alprazolam does have a negative impact on memory recall.
+Alprazolam, especially when the dose is 3, has a huge effect on the difference in memory test score. This means that Alprazolam does have a negative impact on memory recall. The difference between the average treatment effect for Alprazolam and a sugar tablet on 3 doses is roughly 10(±2). 

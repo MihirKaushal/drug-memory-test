@@ -63,7 +63,8 @@ d <- graph_data |>
   labs(title = "Effect of Drugs on the Difference in Memory Test Score",
        subtitle = "The drug Alprazolam with 3 dosages has the greatest difference in memory test score.",
        y = "Type of anti-anxiety drug",
-       x = "Difference in Memory Test Score (Before - After)") +
+       x = "Difference in Memory Test Score (Before - After)",
+       caption = "Made from the raw data.") +
   theme_clean() + # Add data source caption
      theme(plot.title = element_text(size = 30, color = "white"),  # Customize plot title text
            plot.subtitle = element_text(size = 20, color = "white"),  # Customize plot subtitle text
@@ -89,4 +90,4 @@ knitr::include_graphics("difference_graph.png")  # Include the saved plot in the
 
 <!-- Intro paragraph  -->
 
-The effects of drugs on memory is very important to know for pharmaceutical companies that produce the medicine. The data is from an experiment on the effects of anti-anxiety medicine on memory recall. I used the data to find the causal effect of type of drug given to the participant and their difference in memory test score. I modeled the difference in memory test score before the drug minus after taking the drug for a set amount of time as a linear function of type of drug and dose amount. By analyzing the data, I was able to find the causal relationship between type of drug and difference in memory test score.
+The effects of drugs on memory is very important to know for pharmaceutical companies that produce the medicine. The data is from an experiment on the effects of anti-anxiety medicine on memory recall. I used the data to find the causal effect of type of drug given to the participant and their difference in memory test score. I modeled the difference in memory test score before the drug minus after taking the drug for a set amount of time as a linear function of type of drug and dose amount. By analyzing the data, I was able to find the causal relationship between type of drug and difference in memory test score. The difference between sugar tablet and Alprazolam is 24.8 score. If someone used to take 3 doses of the sugar tablet, and then switched to 3 doses of Alprazolam, their difference in memory test score will worsen by around 25 points. 
