@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://MihirKaushal.github.io/drug-memory-test/model.html</loc>
-    <lastmod>2024-08-07T23:39:04.397Z</lastmod>
+    <loc>https://MihirKaushal.github.io/drug-memory-test/sources.html</loc>
+    <lastmod>2024-08-08T22:16:12.135Z</lastmod>
+  </url>
+  <url>
+    <loc>https://MihirKaushal.github.io/drug-memory-test/index.html</loc>
+    <lastmod>2024-08-08T23:47:09.069Z</lastmod>
   </url>
   <url>
     <loc>https://MihirKaushal.github.io/drug-memory-test/about.html</loc>
     <lastmod>2024-08-05T22:22:12.657Z</lastmod>
   </url>
   <url>
-    <loc>https://MihirKaushal.github.io/drug-memory-test/index.html</loc>
-    <lastmod>2024-08-07T23:42:15.113Z</lastmod>
+    <loc>https://MihirKaushal.github.io/drug-memory-test/model.html</loc>
+    <lastmod>2024-08-08T23:47:27.503Z</lastmod>
   </url>
 </urlset>
