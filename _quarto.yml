@@ -9,6 +9,7 @@ website:
         text: Home
       - model.qmd
       - about.qmd
+      - sources.qmd
 
 format:
   html:

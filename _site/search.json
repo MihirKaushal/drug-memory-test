@@ -4,7 +4,7 @@
     "href": "model.html",
     "title": "Model",
     "section": "",
-    "text": "Characteristic\nBeta\n95% CI\n1\n\n\n\n\n(Intercept)\n6.9\n4.0, 9.9\n\n\nDosage\n\n\n\n\n\n\n    1\n—\n—\n\n\n    2\n1.7\n-1.4, 5.0\n\n\n    3\n6.0\n2.6, 9.2\n\n\nDrug\n\n\n\n\n\n\n    Alprazolam\n—\n—\n\n\n    DrugSugarTablet\n-9.7\n-13, -6.5\n\n\n    Triazolam\n-10\n-13, -6.8\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\nIn the experiment, there were three types of drugs as the treatment: Alprazolam, Triazolam, and Sugar Tablet as a placebo for the control group. The participants were both genders above 25 years old to ensure a fully developed pre-frontal cortex, a region responsible for higher level cognition and memory recall. Experiment was executed under the supervision of Mr. Almohalwas at UCLA. All aspects of the experiment such as experimental design, data collection and preprocessing was done by Steve Ahn.\n\n\n\n\n\n\n\n\n\nWhile triazolam and sugar are close to 0, Alprazolam, especially when the dose is 3, has a huge treatment effect on the difference in memory test score. This means that Alprazolam does have a negative impact on memory recall."
+    "text": "Characteristic\nBeta\n95% CI\n1\n\n\n\n\n(Intercept)\n6.9\n4.0, 9.9\n\n\nDosage\n\n\n\n\n\n\n    1\n—\n—\n\n\n    2\n1.7\n-1.4, 5.0\n\n\n    3\n6.0\n2.6, 9.2\n\n\nDrug\n\n\n\n\n\n\n    Alprazolam\n—\n—\n\n\n    DrugSugarTablet\n-9.7\n-13, -6.5\n\n\n    Triazolam\n-10\n-13, -6.8\n\n\n\n1\nCI = Credible Interval\n\n\n\n\n\n\n\n\nIn the experiment, there were three types of drugs as the treatment: Alprazolam, Triazolam, and Sugar Tablet as a placebo for the control group. The participants were both genders above 25 years old to ensure a fully developed pre-frontal cortex, a region responsible for higher level cognition and memory recall.\n\n\n\n\n\n\n\n\n\nWhile triazolam and sugar are close to 0, Alprazolam, especially when the dose is 3, has a huge treatment effect on the difference in memory test score. This means that Alprazolam does have a negative impact on memory recall."
   },
   {
     "objectID": "about.html",
@@ -18,6 +18,13 @@
     "href": "index.html",
     "title": "Effect of Drugs on Memory Recall",
     "section": "",
-    "text": "What is the effect of drugs on memory recall?\n\n\n\n\n\n\n\n\n\n\n\nThe effects of drugs on memory is very important to know for pharmaceutical companies that produce the medicine. The data is from an experiment on the effects of anti-anxiety medicine on memory recall. The data was downloaded from kaggle.com. I used this data to find the causal effect of type of drug given to the participant and their difference in memory test score. The data originally had 9 columns, so I had to select only the information that I wanted to analyze. I modeled the difference in memory test score before the drug minus after taking the drug for a set amount of time as a linear function of type of drug and dose amount. By analyzing the data, I was able to find the causal relationship between type of drug and difference in memory test score."
+    "text": "What is the effect of drugs on memory recall?\n\n\n\n\n\n\n\n\n\n\n\nThe effects of drugs on memory is very important to know for pharmaceutical companies that produce the medicine. The data is from an experiment on the effects of anti-anxiety medicine on memory recall. I used the data to find the causal effect of type of drug given to the participant and their difference in memory test score. I modeled the difference in memory test score before the drug minus after taking the drug for a set amount of time as a linear function of type of drug and dose amount. By analyzing the data, I was able to find the causal relationship between type of drug and difference in memory test score."
+  },
+  {
+    "objectID": "sources.html",
+    "href": "sources.html",
+    "title": "Sources",
+    "section": "",
+    "text": "The data is from Memory Test on Drugged Islanders Data in Kaggle. The data originally had 9 columns, so I had to select only the information that I wanted to analyze.\nThe experiment was executed under the supervision of Mr. Almohalwas at UCLA. All aspects of the experiment such as experimental design, data collection and preprocessing was done by Steve Ahn."
   }
 ]

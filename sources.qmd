@@ -1,0 +1,19 @@
+---
+title: "Sources"
+output: 
+  html_document:
+    css: styles.css  
+    fig_width: 100%  
+    fig_height: 100%  
+    fig_caption: yes  
+    keep_md: true 
+execute: 
+  echo: false  
+  warning: false 
+  message: false
+---
+
+The data is from [Memory Test on Drugged Islanders Data in Kaggle](https://www.kaggle.com/datasets/steveahn/memory-test-on-drugged-islanders-data). The data originally had 9 columns, so I had to select only the information that I wanted to analyze.
+
+The experiment was executed under the supervision of Mr. Almohalwas at UCLA. All aspects of the experiment such as experimental design, data collection and preprocessing was done by Steve Ahn.
+
